@@ -1,0 +1,64 @@
+# Labelled evaluation set for UN R155 Annex 5 retrieval.
+# Queries are paraphrases in engineering language, not copies of the Annex text.
+# 'expected' lists every Annex 5 example that is a correct answer.
+
+- query: An attacker floods the CAN bus so the brakes stop responding
+  expected: ["24.1", "8.1"]
+- query: A tampered firmware image is pushed through the over-the-air update server
+  expected: ["12.1", "12.3"]
+- query: A cheap dongle in the OBD socket rewrites vehicle calibration values
+  expected: ["18.3"]
+- query: Secret keys are read out of an ECU
+  expected: ["19.3"]
+- query: Someone sits between the car and the cloud and hijacks the session
+  expected: ["6.2"]
+- query: Old recorded messages are sent again to roll back gateway firmware
+  expected: ["6.3"]
+- query: Fake satellite positioning signals mislead the navigation
+  expected: ["4.1"]
+- query: A disgruntled employee at the OEM misuses admin rights on the server
+  expected: ["1.1", "3.1"]
+- query: A USB stick carrying malware infects the head unit
+  expected: ["18.2", "10.1", "18.1"]
+- query: Rolling back the mileage shown on the odometer
+  expected: ["20.4"]
+- query: Forged messages from roadside infrastructure units
+  expected: ["11.2", "4.1"]
+- query: A JTAG debug interface is still open on production control units
+  expected: ["28.2"]
+- query: The ECU still uses an outdated cipher that is being phased out
+  expected: ["26.3", "26.2"]
+- query: Personal data of the previous owner remains after the car is resold
+  expected: ["31.1"]
+- query: Overloading the update infrastructure prevents urgent patches from reaching cars
+  expected: ["13.1"]
+- query: Changing airbag or brake configuration without authorisation
+  expected: ["25.1"]
+- query: Abusing the remote unlock feature of the telematics service
+  expected: ["16.1", "16.2"]
+- query: The driver is tricked into installing malicious software
+  expected: ["15.1"]
+- query: Security event logs are wiped to hide an intrusion
+  expected: ["21.1"]
+- query: An extra electronic device is spliced into the wiring to intercept traffic
+  expected: ["32.1"]
+- query: The charging station requests an unsafe charging voltage
+  expected: ["25.2"]
+- query: Listening to unencrypted telematics traffic
+  expected: ["7.1"]
+- query: A normal user account on the infotainment system escalates to root
+  expected: ["9.1"]
+- query: A poorly secured third-party app on the infotainment is used as a way in
+  expected: ["17.1"]
+- query: Customer records leak from the cloud provider
+  expected: ["3.2", "3.3", "3.5"]
+- query: Gateways between network segments are bypassed to send arbitrary CAN frames
+  expected: ["29.2"]
+- query: Short keys that stay valid for years can be brute forced
+  expected: ["26.1"]
+- query: The back-end goes down and cars lose the services they depend on
+  expected: ["2.1"]
+- query: Changing the vehicle identification to commit identity fraud
+  expected: ["20.1", "20.2"]
+- query: Communication channels allow code to be injected into vehicle software
+  expected: ["5.1", "5.5"]

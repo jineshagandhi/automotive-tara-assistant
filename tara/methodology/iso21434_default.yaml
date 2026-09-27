@@ -1,0 +1,99 @@
+# TARA methodology profile
+#
+# Structure follows ISO/SAE 21434 clause 15 (TARA methods): impact rating,
+# attack feasibility rating (attack potential approach, based on ISO/IEC 18045),
+# risk value determination and risk treatment decision.
+#
+# The numeric values below are the example values commonly used with the
+# informative annexes of ISO/SAE 21434. They are NOT a substitute for your
+# organisation's approved rating rules: copy this file, adjust it, and load the
+# copy with TARA_PROFILE=path/to/profile.yaml.
+
+name: ISO/SAE 21434 example profile
+version: "1.0"
+
+impact:
+  categories: [Safety, Financial, Operational, Privacy]
+  # Ordered from lowest to highest
+  levels: [Negligible, Moderate, Major, Severe]
+
+attack_potential:
+  factors:
+    elapsed_time:
+      label: Elapsed time
+      levels:
+        - {name: "<= 1 day", value: 0}
+        - {name: "<= 1 week", value: 1}
+        - {name: "<= 1 month", value: 4}
+        - {name: "<= 6 months", value: 17}
+        - {name: "> 6 months", value: 19}
+    expertise:
+      label: Specialist expertise
+      levels:
+        - {name: Layman, value: 0}
+        - {name: Proficient, value: 3}
+        - {name: Expert, value: 6}
+        - {name: Multiple experts, value: 8}
+    knowledge:
+      label: Knowledge of the item
+      levels:
+        - {name: Public, value: 0}
+        - {name: Restricted, value: 3}
+        - {name: Confidential, value: 7}
+        - {name: Strictly confidential, value: 11}
+    window:
+      label: Window of opportunity
+      levels:
+        - {name: Unlimited, value: 0}
+        - {name: Easy, value: 1}
+        - {name: Moderate, value: 4}
+        - {name: Difficult, value: 10}
+    equipment:
+      label: Equipment
+      levels:
+        - {name: Standard, value: 0}
+        - {name: Specialized, value: 4}
+        - {name: Bespoke, value: 7}
+        - {name: Multiple bespoke, value: 9}
+
+  # Sum of factor values -> attack feasibility rating (lower sum = easier attack)
+  rating:
+    - {max: 13, rating: High}
+    - {max: 19, rating: Medium}
+    - {max: 24, rating: Low}
+    - {max: 999, rating: Very low}
+
+feasibility_levels: [Very low, Low, Medium, High]
+
+# Attack vector based rating, used for CAL determination and as a cross-check
+attack_vector:
+  Network: High
+  Adjacent: Medium
+  Local: Low
+  Physical: Very low
+
+# Risk value (1-5) by impact (rows) and attack feasibility (columns)
+risk_matrix:
+  Severe:     {Very low: 2, Low: 3, Medium: 4, High: 5}
+  Major:      {Very low: 1, Low: 2, Medium: 3, High: 4}
+  Moderate:   {Very low: 1, Low: 2, Medium: 2, High: 3}
+  Negligible: {Very low: 1, Low: 1, Medium: 1, High: 1}
+
+# Cybersecurity assurance level by impact and attack vector
+cal_matrix:
+  Severe:     {Physical: CAL2, Local: CAL3, Adjacent: CAL4, Network: CAL4}
+  Major:      {Physical: CAL1, Local: CAL2, Adjacent: CAL3, Network: CAL4}
+  Moderate:   {Physical: CAL1, Local: CAL1, Adjacent: CAL2, Network: CAL3}
+  Negligible: {Physical: null, Local: null, Adjacent: null, Network: null}
+
+# Risk treatment decision by risk value
+treatment:
+  5: {decision: Reduce, note: Unacceptable risk, cybersecurity goal and controls required}
+  4: {decision: Reduce, note: High risk, cybersecurity goal and controls required}
+  3: {decision: Reduce, note: Medium risk, reduce unless a justified claim is recorded}
+  2: {decision: Retain, note: Low risk, retain with a documented cybersecurity claim}
+  1: {decision: Retain, note: Very low risk, retain}
+
+# Each additional ECU an attacker must compromise between the entry point and
+# the target raises the elapsed time by this many levels
+pivot_elapsed_time_steps: 1

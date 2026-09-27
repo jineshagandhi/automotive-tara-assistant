@@ -1,0 +1,221 @@
+# Automotive cybersecurity control catalogue
+#
+# r155       Annex 5 mitigations the control implements
+# placement  where the control can be deployed: component types, "bus",
+#            or interface types from interfaces.yaml
+# protects   cybersecurity properties the control protects
+# effect     raise of attack potential factors, in levels of the methodology
+#            profile, when the control sits on the attack path
+#
+# Optional applicability filters:
+# entries      only for attack paths that start at these interface types
+#              ("direct" is physical access to the ECU itself)
+# asset_types  only for these asset types
+# bus_types    only on these bus types when placed on a bus
+# exclude_entries  not for paths that start at these interface types
+# scope: asset only effective on the component that stores the asset
+#
+# Effects are deliberately conservative starting estimates. The analyst reviews
+# them per project, as ISO/SAE 21434 requires the rationale to be recorded.
+
+SECOC:
+  name: Secure onboard communication (AUTOSAR SecOC)
+  description: MAC and freshness value on safety-relevant in-vehicle messages so receivers reject forged or replayed frames.
+  r155: [M10]
+  placement: [bus]
+  protects: [Integrity, Authenticity]
+  effect: {knowledge: 2, expertise: 1}
+  reference: AUTOSAR SWS SecureOnboardCommunication
+  bus_types: [CAN, CAN-FD, Ethernet, FlexRay]
+  asset_types: [message, function, configuration]
+
+GATEWAY_FIREWALL:
+  name: Central gateway filtering and domain separation
+  description: Whitelist-based routing between network domains, blocking diagnostic and control messages from untrusted domains.
+  r155: [M22, M23]
+  placement: [gateway]
+  protects: [Integrity, Authenticity, Availability]
+  effect: {window: 1, elapsed_time: 1}
+  reference: R155 Annex 5 threat 29.2 (network separation)
+
+CAN_IDS:
+  name: In-vehicle intrusion detection (IDS)
+  description: Detects anomalous CAN or Ethernet traffic and reports events to the vehicle security operations centre.
+  r155: [M15, M13]
+  placement: [gateway, bus]
+  protects: [Integrity, Availability, Authenticity]
+  effect: {window: 1}
+  reference: AUTOSAR SWS IntrusionDetectionSystemManager
+  bus_types: [CAN, CAN-FD, Ethernet, FlexRay]
+
+SECURE_BOOT:
+  name: Secure boot with hardware root of trust
+  description: The ECU verifies the signature of every software stage before execution, so modified firmware does not run.
+  r155: [M21, M14]
+  placement: [ecu, gateway, telematics, infotainment]
+  protects: [Integrity, Authenticity]
+  effect: {expertise: 1, equipment: 1}
+  reference: R155 Annex 5 M21
+  asset_types: [firmware, function, message, configuration, key]
+  # Stops modified software, not fake data injected over a radio link
+  exclude_entries: [gnss, tpms_rf, key_fob_rf]
+
+HSM_KEYS:
+  name: Hardware security module for key storage
+  description: Cryptographic keys are generated and kept in an HSM or secure element and never leave it in plain text.
+  r155: [M11]
+  placement: [ecu, gateway, telematics, infotainment]
+  protects: [Confidentiality, Integrity, Authenticity]
+  effect: {equipment: 1, expertise: 1}
+  reference: R155 Annex 5 M11
+  asset_types: [key]
+  scope: asset
+
+SIGNED_OTA:
+  name: Signed software updates (Uptane OTA and secure flashing)
+  description: Update metadata and images are signed with offline keys, checked for freshness and verified on the vehicle before install, for OTA and diagnostic reprogramming alike.
+  r155: [M16, M11]
+  placement: [ota, telematics, gateway, ecu]
+  protects: [Integrity, Authenticity]
+  effect: {knowledge: 2, expertise: 1}
+  reference: Uptane Standard, UN R156
+  asset_types: [firmware]
+
+MUTUAL_TLS:
+  name: Mutual TLS for vehicle to back-end connections
+  description: Certificate-based mutual authentication and encryption of all telematics and back-end sessions.
+  r155: [M10, M12]
+  placement: [cellular, backend_api, telematics, backend]
+  protects: [Confidentiality, Integrity, Authenticity]
+  effect: {expertise: 1, knowledge: 1}
+  reference: R155 Annex 5 M12
+
+UDS_AUTH:
+  name: Diagnostic authentication (UDS 0x29 with certificates)
+  description: Diagnostic sessions that write data or reprogram ECUs require certificate-based authentication of the tester.
+  r155: [M20, M22]
+  placement: [obd, gateway, ecu]
+  protects: [Integrity, Authenticity, Confidentiality]
+  effect: {knowledge: 2}
+  reference: ISO 14229-1 service 0x29
+  entries: [obd]
+
+BT_HARDENING:
+  name: Bluetooth hardening
+  description: Secure Simple Pairing or LE Secure Connections only, minimal profiles, patched stack, no pairing while driving.
+  r155: [M22, M23]
+  placement: [bluetooth, ble_key, infotainment]
+  protects: [Confidentiality, Integrity, Authenticity]
+  effect: {expertise: 1}
+  reference: R155 Annex 5 M22
+  entries: [bluetooth, ble_key]
+
+WIFI_HARDENING:
+  name: Wi-Fi hardening
+  description: WPA3, isolated hotspot network, no services exposed on the in-vehicle side, closed debug ports.
+  r155: [M22, M23]
+  placement: [wifi, infotainment, telematics]
+  protects: [Confidentiality, Integrity, Availability]
+  effect: {expertise: 1, window: 1}
+  reference: R155 Annex 5 threat 29.1
+  entries: [wifi]
+
+USB_HARDENING:
+  name: USB and media hardening
+  description: Media parsing in a sandbox, file type whitelisting, no code execution or update from unsigned media.
+  r155: [M14, M22]
+  placement: [usb, infotainment]
+  protects: [Integrity, Availability]
+  effect: {expertise: 1, knowledge: 1}
+  reference: R155 Annex 5 threats 18.1 and 18.2
+  entries: [usb]
+
+UWB_RANGING:
+  name: UWB distance bounding for keyless entry
+  description: Secure time-of-flight ranging so relayed key signals are rejected.
+  r155: [M10, M20]
+  placement: [ble_key, key_fob_rf]
+  protects: [Authenticity]
+  effect: {equipment: 2, expertise: 1}
+  reference: CCC Digital Key Release 3
+  entries: [ble_key, key_fob_rf]
+
+V2X_PKI:
+  name: V2X security with PKI certificates
+  description: IEEE 1609.2 / ETSI TS 103 097 signed messages with misbehaviour detection.
+  r155: [M10, M11]
+  placement: [v2x]
+  protects: [Integrity, Authenticity]
+  effect: {knowledge: 2, equipment: 1}
+  reference: IEEE 1609.2, ETSI TS 103 097
+  entries: [v2x]
+
+SENSOR_PLAUSIBILITY:
+  name: Sensor and GNSS plausibility checks
+  description: Cross-checks received positions and sensor values against other sources before use.
+  r155: [M10]
+  placement: [gnss, tpms_rf, v2x, ecu, telematics, sensor]
+  protects: [Integrity, Authenticity]
+  effect: {expertise: 1, equipment: 1}
+  reference: R155 Annex 5 threat 4.1
+  entries: [gnss, tpms_rf, v2x]
+
+DEBUG_LOCK:
+  name: Debug interface lock
+  description: JTAG and UART disabled or protected by challenge-response in production parts.
+  r155: [M9, M23]
+  placement: [debug_port, ecu, gateway, telematics, infotainment]
+  protects: [Confidentiality, Integrity]
+  effect: {equipment: 1, knowledge: 1}
+  reference: R155 Annex 5 threat 28.2
+  entries: [debug_port, direct]
+  scope: asset
+
+BACKEND_ACCESS:
+  name: Back-end access control and monitoring
+  description: Multi-factor authentication, least privilege, OWASP hardening and security monitoring on OEM servers.
+  r155: [M1, M2, M3, M5, M18, M19]
+  placement: [backend_api, backend]
+  protects: [Confidentiality, Integrity, Availability, Authenticity]
+  effect: {expertise: 1, knowledge: 1}
+  reference: OWASP ASVS
+
+DATA_ENCRYPTION:
+  name: Encryption of personal data at rest
+  description: Personal and location data is encrypted with keys in secure storage and wiped on change of owner.
+  r155: [M24, M8]
+  placement: [infotainment, telematics, backend]
+  protects: [Confidentiality]
+  effect: {equipment: 1, knowledge: 1}
+  reference: R155 Annex 5 M24
+  asset_types: [personal_data]
+  scope: asset
+
+CHARGING_SECURITY:
+  name: ISO 15118 TLS and charging parameter validation
+  description: TLS on the charging link and range checks on requested voltage, current and battery limits.
+  r155: [M10, M22]
+  placement: [ev_charging, ecu]
+  protects: [Integrity, Authenticity, Availability]
+  effect: {expertise: 1, knowledge: 1}
+  reference: ISO 15118-2 / -20
+  entries: [ev_charging]
+
+DOS_PROTECTION:
+  name: Rate limiting and bus-off recovery
+  description: Rate limits on external interfaces and gateway, with recovery from bus flooding for critical functions.
+  r155: [M13]
+  placement: [gateway, bus, telematics]
+  protects: [Availability]
+  effect: {expertise: 1, window: 1}
+  reference: R155 Annex 5 M13
+  bus_types: [CAN, CAN-FD, Ethernet, FlexRay]
+
+BACKEND_RESILIENCE:
+  name: Back-end resilience and DDoS protection
+  description: DDoS filtering, rate limiting, redundant regions and tested recovery for services the fleet relies on.
+  r155: [M3, M13]
+  placement: [backend, backend_api]
+  protects: [Availability]
+  effect: {expertise: 1, equipment: 2}
+  reference: R155 Annex 5 M3

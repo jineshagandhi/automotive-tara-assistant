@@ -1,0 +1,51 @@
+# Prior relevance of UN R155 Annex 5 Part A threats
+#
+# Retrieval ranks R155 threats by text similarity to a threat scenario. These
+# groups add a transparent boost when a threat fits the compromised property
+# or the asset type, so the ranking can be explained to a reviewer.
+
+by_property:
+  Integrity: ["5.1", "5.2", "5.3", "5.5", "11.1", "11.3", "11.4", "12.1", "12.2", "12.3",
+              "18.1", "18.3", "20.1", "20.4", "20.5", "22.2", "23.1", "25.1", "25.2", "32.1"]
+  Authenticity: ["4.1", "4.2", "6.1", "6.2", "6.3", "11.1", "11.2", "11.3", "11.4", "16.1", "20.2"]
+  Confidentiality: ["7.1", "7.2", "19.1", "19.2", "19.3", "26.1", "26.2", "31.1", "30.1",
+                    "3.1", "3.3", "3.5"]
+  Availability: ["2.1", "8.1", "8.2", "13.1", "24.1", "5.4", "30.3"]
+
+by_asset_type:
+  message: ["11.1", "11.4", "6.1", "6.3", "5.2", "24.1"]
+  function: ["16.1", "16.2", "25.1", "11.1"]
+  firmware: ["12.1", "12.2", "12.3", "19.1", "22.2", "23.1", "5.1"]
+  key: ["19.3", "12.4", "26.1", "26.2", "26.3"]
+  personal_data: ["19.2", "31.1", "7.2", "3.2", "3.5", "30.1"]
+  configuration: ["25.1", "25.2", "20.5", "5.2"]
+  diagnostic: ["18.3", "11.3", "20.5", "9.1"]
+  log: ["21.1", "20.3"]
+  service: ["2.1", "13.1", "8.1", "16.2"]
+
+# Threats about messages received over the air from outside the vehicle only
+# apply when one of the most feasible paths starts at one of these interfaces
+entry_specific:
+  "4.1": [gnss, v2x, key_fob_rf, tpms_rf, ble_key]
+  "4.2": [v2x]
+  "8.2": [v2x]
+  "11.2": [v2x]
+
+# Threats about OEM back-end servers only apply when a back-end is in scope
+backend_only: ["1.1", "1.2", "1.3", "2.1", "3.1", "3.2", "3.3", "3.4", "3.5", "13.1"]
+
+# Threats that are handled by the Cybersecurity Management System processes
+# (R155 paragraph 7.2) rather than by a vehicle level control
+csms_process:
+  "15.2": Security procedures are defined, trained and audited in the CSMS (M19)
+  "27.1": Supplier cybersecurity requirements and interface agreements (ISO/SAE 21434 clause 7)
+  "28.1": Secure development with code review, static analysis and penetration testing (M23)
+  "30.2": Data retention and DRM handling defined in the back-end data protection process (M24)
+  "30.3": Hardware lifecycle and data integrity checks in the production and service process (M24)
+
+# Words added to the retrieval query for each compromised property
+property_terms:
+  Integrity: manipulation modification falsify tamper overwrite unauthorized change
+  Authenticity: spoofing impersonation fake untrusted source replay forged messages
+  Confidentiality: extraction unauthorized access disclosure leak eavesdropping interception
+  Availability: denial of service disruption flooding block prevent functioning

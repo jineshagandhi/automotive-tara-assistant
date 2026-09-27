@@ -1,0 +1,70 @@
+# Impact rating rules (ISO/SAE 21434 clause 15.5: Safety, Financial,
+# Operational and Privacy impact of a damage scenario)
+#
+# Each rule matches on the compromised property and on asset attributes.
+# Every matching rule proposes a level for its impact category, and the
+# highest proposal per category is used. {asset} and {asil} are filled in.
+# The analyst can override any rating in the UI, and the override is logged.
+
+stride:
+  Integrity: Tampering
+  Authenticity: Spoofing
+  Confidentiality: Information disclosure
+  Availability: Denial of service
+
+verbs:
+  Integrity: manipulation of
+  Authenticity: spoofing of
+  Confidentiality: disclosure of
+  Availability: loss of
+
+rules:
+  # Safety
+  - {category: Safety, properties: [Integrity, Authenticity], asil: [C, D], level: Severe,
+     rationale: "Manipulated {asset} can cause loss of vehicle control (ASIL {asil} function), with life-threatening injuries possible"}
+  - {category: Safety, properties: [Integrity, Authenticity], asil: [B], level: Major,
+     rationale: "Manipulated {asset} affects an ASIL B function, severe injuries possible"}
+  - {category: Safety, properties: [Integrity, Authenticity], asil: [A], level: Moderate,
+     rationale: "Manipulated {asset} affects an ASIL A function, light injuries possible"}
+  - {category: Safety, properties: [Availability], asil: [D], level: Major,
+     rationale: "Loss of {asset} on an ASIL D function, mitigated by the fail-safe state"}
+  - {category: Safety, properties: [Availability], asil: [B, C], level: Moderate,
+     rationale: "Loss of {asset}, the vehicle degrades to a safe state"}
+  - {category: Safety, properties: [Integrity, Authenticity], tags: [fire], level: Severe,
+     rationale: "Manipulated {asset} can cause thermal runaway of the traction battery"}
+
+  # Financial
+  - {category: Financial, properties: [Integrity, Authenticity], tags: [theft], level: Major,
+     rationale: "Compromise of {asset} enables theft of the vehicle"}
+  - {category: Financial, properties: [Confidentiality], types: [key], tags: [theft], level: Major,
+     rationale: "Extracted {asset} allow the vehicle to be opened and started"}
+  - {category: Financial, properties: [Confidentiality], types: [key], tags: [fleet], level: Severe,
+     rationale: "Extracted {asset} can be reused against the whole fleet"}
+  - {category: Financial, properties: [Integrity, Authenticity], tags: [fleet], level: Severe,
+     rationale: "Compromise of {asset} can affect the whole fleet, leading to recalls"}
+  - {category: Financial, properties: [Confidentiality], types: [firmware], level: Major,
+     rationale: "Extraction of {asset} enables reverse engineering and product piracy"}
+  - {category: Financial, properties: [Integrity], types: [firmware, configuration], level: Major,
+     rationale: "Manipulated {asset} leads to warranty cost and field actions"}
+  - {category: Financial, properties: [Integrity], tags: [fraud], level: Major,
+     rationale: "Manipulated {asset} enables fraud, e.g. mileage or warranty fraud"}
+  - {category: Financial, properties: [Confidentiality], personal_data: [sensitive], level: Major,
+     rationale: "Disclosure of {asset} leads to regulatory fines under data protection law"}
+
+  # Operational
+  - {category: Operational, properties: [Availability], types: [function, message, service], level: Major,
+     rationale: "Loss of {asset} makes a vehicle function unavailable to the user"}
+  - {category: Operational, properties: [Integrity, Authenticity], types: [function, message, configuration], level: Moderate,
+     rationale: "Manipulated {asset} causes unexpected vehicle behaviour"}
+  - {category: Operational, properties: [Integrity, Availability], types: [diagnostic, log], level: Moderate,
+     rationale: "Manipulated or lost {asset} hampers diagnosis and incident investigation"}
+  - {category: Operational, properties: [Availability], tags: [fleet], level: Severe,
+     rationale: "Loss of {asset} affects the connected services of the whole fleet"}
+
+  # Privacy
+  - {category: Privacy, properties: [Confidentiality], personal_data: [sensitive], level: Severe,
+     rationale: "Disclosure of {asset} exposes sensitive personal data such as location or identity"}
+  - {category: Privacy, properties: [Confidentiality], personal_data: [personal], level: Major,
+     rationale: "Disclosure of {asset} exposes personal data of the vehicle user"}
+  - {category: Privacy, properties: [Integrity], personal_data: [personal, sensitive], level: Moderate,
+     rationale: "Manipulated {asset} corrupts personal data of the vehicle user"}

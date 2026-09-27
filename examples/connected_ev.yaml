@@ -1,0 +1,128 @@
+# Sample item: connected battery electric vehicle, concept phase
+#
+# A fictional but realistic E/E architecture used to demonstrate the TARA.
+# Only a few controls exist at concept phase, which is when ISO/SAE 21434
+# expects the TARA to define the cybersecurity goals.
+
+name: Connected EV - concept phase
+version: "0.3"
+description: >
+  Battery electric passenger car with a central gateway, an Automotive Ethernet
+  backbone and CAN-FD domain buses. The telematics unit connects to the OEM
+  back-end for remote services and over-the-air updates. A digital key module
+  supports phone-as-a-key over BLE and a classic key fob.
+
+components:
+  - {id: BACKEND, name: OEM connected services back-end, type: backend, zone: external,
+     description: Cloud platform for remote commands, OTA campaigns and the companion app}
+  - {id: TCU, name: Telematics control unit, type: telematics, zone: connectivity,
+     description: LTE modem, GNSS receiver, OTA client and remote command handler}
+  - {id: IVI, name: Infotainment head unit, type: infotainment, zone: infotainment,
+     description: Linux based head unit with Wi-Fi hotspot, Bluetooth and USB media}
+  - {id: CGW, name: Central gateway, type: gateway, zone: backbone,
+     description: Routes messages between the Ethernet backbone and the CAN-FD domains, hosts the diagnostic router}
+  - {id: ADAS, name: ADAS domain controller, type: ecu, zone: chassis, asil: D,
+     description: Adaptive cruise control and lane keeping, sends brake and steering requests}
+  - {id: ESC, name: Brake control unit (ESC), type: ecu, zone: chassis, asil: D,
+     description: Electronic stability control and brake-by-wire}
+  - {id: EPS, name: Electric power steering, type: ecu, zone: chassis, asil: D,
+     description: Steering assist and steering torque overlay requests}
+  - {id: VCU, name: Vehicle control unit, type: ecu, zone: powertrain, asil: C,
+     description: Torque coordination, drive mode and odometer}
+  - {id: BMS, name: Battery management system, type: ecu, zone: powertrain, asil: C,
+     description: Cell monitoring, thermal management and charge limits}
+  - {id: OBC, name: On-board charger and charge controller, type: ecu, zone: powertrain, asil: B,
+     description: AC/DC charging and ISO 15118 communication with the charging station}
+  - {id: BCM, name: Body control module, type: ecu, zone: body, asil: B,
+     description: Door locks, immobilizer, lighting and TPMS receiver}
+  - {id: DKM, name: Digital key module, type: ecu, zone: body,
+     description: BLE phone-as-a-key and key fob receiver}
+
+buses:
+  - {id: LTE, name: Cellular link, type: Cellular, members: [BACKEND, TCU]}
+  - {id: ETH, name: Ethernet backbone, type: Ethernet, members: [TCU, IVI, CGW, ADAS]}
+  - {id: CAN_CH, name: Chassis CAN-FD, type: CAN-FD, members: [CGW, ADAS, ESC, EPS]}
+  - {id: CAN_PT, name: Powertrain CAN-FD, type: CAN-FD, members: [CGW, VCU, BMS, OBC]}
+  - {id: CAN_BODY, name: Body CAN, type: CAN, members: [CGW, BCM, DKM]}
+
+interfaces:
+  - {id: IF_API, type: backend_api, component: BACKEND, name: Back-end public API}
+  - {id: IF_APP, type: mobile_app, component: BACKEND, name: Companion app}
+  - {id: IF_CELL, type: cellular, component: TCU, name: LTE modem}
+  - {id: IF_OTA, type: ota, component: TCU, name: OTA update client}
+  - {id: IF_GNSS, type: gnss, component: TCU, name: GNSS receiver, targets: [A_POS]}
+  - {id: IF_WIFI, type: wifi, component: IVI, name: Wi-Fi hotspot}
+  - {id: IF_BT, type: bluetooth, component: IVI, name: Bluetooth hands-free}
+  - {id: IF_USB, type: usb, component: IVI, name: USB media port}
+  - {id: IF_OBD, type: obd, component: CGW, name: OBD-II port}
+  - {id: IF_CHG, type: ev_charging, component: OBC, name: CCS charging inlet}
+  - {id: IF_BLE, type: ble_key, component: DKM, name: BLE phone-as-a-key}
+  - {id: IF_FOB, type: key_fob_rf, component: DKM, name: Key fob receiver, targets: [A_DKEY_AUTH]}
+  - {id: IF_TPMS, type: tpms_rf, component: BCM, name: TPMS receiver, targets: [A_TPMS]}
+
+assets:
+  - {id: A_BRAKE, name: brake request messages, type: message, component: ESC, asil: D,
+     properties: [Integrity, Authenticity, Availability],
+     description: Deceleration requests from ADAS to the ESC on the chassis CAN-FD}
+  - {id: A_STEER, name: steering torque requests, type: message, component: EPS, asil: D,
+     properties: [Integrity, Authenticity],
+     description: Lane keeping torque overlay requests from ADAS to the EPS}
+  - {id: A_ESC_FW, name: ESC firmware, type: firmware, component: ESC, asil: D,
+     properties: [Integrity, Confidentiality],
+     description: Brake control software and calibration}
+  - {id: A_ADAS_FN, name: adaptive cruise control function, type: function, component: ADAS, asil: C,
+     properties: [Integrity, Availability],
+     description: Longitudinal control based on radar and camera objects}
+  - {id: A_BMS_CFG, name: battery charge and thermal limits, type: configuration, component: BMS, asil: C,
+     tags: [fire], properties: [Integrity],
+     description: Cell voltage, current and temperature limits used by the BMS}
+  - {id: A_CHG, name: charging session parameters, type: message, component: OBC, asil: B,
+     properties: [Integrity, Availability],
+     description: Voltage and current negotiated with the charging station over ISO 15118}
+  - {id: A_ODO, name: odometer value, type: configuration, component: VCU,
+     tags: [fraud], properties: [Integrity],
+     description: Mileage stored in the VCU and reported to the back-end}
+  - {id: A_LOCK, name: door lock and immobilizer function, type: function, component: BCM,
+     tags: [theft], properties: [Integrity, Authenticity],
+     description: Unlock, lock and engine immobilizer release commands}
+  - {id: A_DKEY, name: digital key credentials, type: key, component: DKM,
+     tags: [theft], properties: [Confidentiality, Integrity],
+     description: Phone-as-a-key cryptographic credentials and paired device list}
+  - {id: A_DKEY_AUTH, name: keyless entry authentication, type: function, component: DKM,
+     tags: [theft], properties: [Authenticity],
+     description: Challenge-response between key fob or phone and the digital key module before unlock}
+  - {id: A_TPMS, name: tyre pressure readings, type: message, component: BCM, asil: A,
+     properties: [Integrity],
+     description: Tyre pressure and temperature received from the wheel sensors, shown as driver warnings}
+  - {id: A_POS, name: GNSS position, type: message, component: TCU,
+     properties: [Integrity],
+     description: Position used for navigation, eCall and geofenced remote services}
+  - {id: A_REMOTE, name: remote vehicle commands, type: function, component: TCU,
+     tags: [theft], properties: [Integrity, Authenticity],
+     description: Remote unlock, climate and charge start commands sent from the app via the back-end}
+  - {id: A_OTA, name: OTA update packages, type: firmware, component: TCU,
+     tags: [fleet], properties: [Integrity, Authenticity],
+     description: Signed software images and update metadata distributed to vehicle ECUs}
+  - {id: A_TCU_KEYS, name: TCU client certificates and keys, type: key, component: TCU,
+     tags: [fleet], properties: [Confidentiality],
+     description: Private keys used to authenticate the vehicle to the back-end}
+  - {id: A_LOC, name: vehicle location history, type: personal_data, component: TCU,
+     personal_data: sensitive, properties: [Confidentiality],
+     description: GNSS positions and trip history sent to the back-end}
+  - {id: A_USER, name: user profile and contacts, type: personal_data, component: IVI,
+     personal_data: personal, properties: [Confidentiality],
+     description: Phone contacts, call history and user accounts on the head unit}
+  - {id: A_FLEET_DB, name: fleet customer database, type: personal_data, component: BACKEND,
+     personal_data: sensitive, properties: [Confidentiality],
+     description: Customer identities, vehicle identification numbers and location data}
+  - {id: A_SERVICES, name: connected services availability, type: service, component: BACKEND,
+     tags: [fleet], properties: [Availability],
+     description: Remote services and OTA campaigns provided by the back-end}
+  - {id: A_DIAG, name: diagnostic trouble codes and event logs, type: diagnostic, component: CGW,
+     properties: [Integrity],
+     description: Fault memory and security event logs stored in the gateway}
+
+controls:
+  - {control: MUTUAL_TLS, target: TCU}
+  - {control: SECURE_BOOT, target: ESC}
+  - {control: SECURE_BOOT, target: EPS}

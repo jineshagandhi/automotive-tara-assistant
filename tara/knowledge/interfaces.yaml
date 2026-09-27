@@ -1,0 +1,120 @@
+# External interface (entry point) catalogue
+#
+# attack_vector  ISO/SAE 21434 attack vector class of the interface
+# factors        default attack potential for reaching the ECU behind the
+#                interface, as level names from the methodology profile.
+#                These are starting estimates for the analyst to review.
+# r155           Annex 5 Part A threats that typically apply to the interface,
+#                used to steer retrieval and to build R155 coverage
+# keywords       terms used to detect the interface in architecture documents
+# pivot          false for receive-only radio links (GNSS, TPMS, key fob): an
+#                attacker can inject data into the receiving ECU but cannot
+#                use the link to take over that ECU and move further
+
+cellular:
+  label: Cellular / telematics (4G, 5G)
+  attack_vector: Network
+  factors: {elapsed_time: "<= 1 week", expertise: Expert, knowledge: Restricted, window: Unlimited, equipment: Standard}
+  r155: ["16.1", "16.2", "5.1", "6.2", "7.1", "8.1", "29.1"]
+  keywords: [cellular, telematics, lte, 4g, 5g, modem, sim, esim, tcu]
+
+backend_api:
+  label: OEM back-end / cloud API
+  attack_vector: Network
+  factors: {elapsed_time: "<= 1 week", expertise: Proficient, knowledge: Restricted, window: Unlimited, equipment: Standard}
+  r155: ["1.1", "1.2", "1.3", "2.1", "3.1", "3.2", "3.3", "3.4", "3.5"]
+  keywords: [backend, back-end, cloud, server, api, portal]
+
+ota:
+  label: Over-the-air software update
+  attack_vector: Network
+  factors: {elapsed_time: "<= 1 month", expertise: Expert, knowledge: Restricted, window: Unlimited, equipment: Standard}
+  r155: ["12.1", "12.3", "12.4", "13.1", "6.3", "23.1"]
+  keywords: [ota, over-the-air, software update, firmware update, fota, sota]
+
+mobile_app:
+  label: Companion mobile app
+  attack_vector: Network
+  factors: {elapsed_time: "<= 1 week", expertise: Proficient, knowledge: Public, window: Unlimited, equipment: Standard}
+  r155: ["16.1", "15.1", "17.1", "19.2"]
+  keywords: [mobile app, smartphone app, companion app, remote app]
+
+wifi:
+  label: Wi-Fi (hotspot / client)
+  attack_vector: Adjacent
+  factors: {elapsed_time: "<= 1 week", expertise: Expert, knowledge: Restricted, window: Moderate, equipment: Standard}
+  r155: ["6.2", "7.1", "9.1", "10.1", "29.1", "16.3"]
+  keywords: [wifi, wi-fi, wlan, hotspot, 802.11]
+
+bluetooth:
+  label: Bluetooth Classic (hands-free, media)
+  attack_vector: Adjacent
+  factors: {elapsed_time: "<= 1 week", expertise: Expert, knowledge: Restricted, window: Moderate, equipment: Standard}
+  r155: ["16.3", "6.2", "7.1", "10.1", "28.1"]
+  keywords: [bluetooth, hands-free, a2dp, hfp, pairing]
+
+ble_key:
+  label: BLE / UWB digital key
+  attack_vector: Adjacent
+  factors: {elapsed_time: "<= 1 month", expertise: Expert, knowledge: Restricted, window: Moderate, equipment: Specialized}
+  r155: ["16.1", "16.3", "6.2", "6.3", "20.2"]
+  keywords: [digital key, phone as key, ble, bluetooth low energy, uwb, passive entry]
+
+key_fob_rf:
+  label: Key fob RF (RKE / PEPS)
+  attack_vector: Adjacent
+  factors: {elapsed_time: "<= 1 week", expertise: Proficient, knowledge: Public, window: Moderate, equipment: Specialized}
+  r155: ["16.1", "6.3", "4.1", "16.3"]
+  keywords: [key fob, remote keyless, rke, peps, keyless entry, immobilizer]
+  pivot: false
+
+v2x:
+  label: V2X (802.11p / C-V2X)
+  attack_vector: Adjacent
+  factors: {elapsed_time: "<= 1 month", expertise: Expert, knowledge: Restricted, window: Moderate, equipment: Specialized}
+  r155: ["4.1", "4.2", "8.2", "11.2", "6.1"]
+  keywords: [v2x, v2v, v2i, 802.11p, c-v2x, pc5, cam, denm]
+
+gnss:
+  label: GNSS receiver
+  attack_vector: Adjacent
+  factors: {elapsed_time: "<= 1 week", expertise: Proficient, knowledge: Public, window: Moderate, equipment: Specialized}
+  r155: ["4.1", "6.1", "16.3"]
+  keywords: [gnss, gps, galileo, positioning]
+  pivot: false
+
+tpms_rf:
+  label: TPMS sensor RF
+  attack_vector: Adjacent
+  factors: {elapsed_time: "<= 1 week", expertise: Proficient, knowledge: Public, window: Easy, equipment: Specialized}
+  r155: ["16.3", "4.1", "32.1"]
+  keywords: [tpms, tyre pressure, tire pressure]
+  pivot: false
+
+usb:
+  label: USB port
+  attack_vector: Local
+  factors: {elapsed_time: "<= 1 day", expertise: Expert, knowledge: Restricted, window: Moderate, equipment: Standard}
+  r155: ["18.1", "18.2", "10.1", "12.2", "15.1"]
+  keywords: [usb, media port, sd card, usb stick]
+
+obd:
+  label: OBD-II diagnostic port
+  attack_vector: Local
+  factors: {elapsed_time: "<= 1 day", expertise: Proficient, knowledge: Restricted, window: Moderate, equipment: Standard}
+  r155: ["18.3", "11.3", "12.2", "20.4", "20.5", "25.1", "9.1"]
+  keywords: [obd, obd-ii, diagnostic port, uds, dongle, diagnostics]
+
+ev_charging:
+  label: EV charging interface (ISO 15118 / PLC)
+  attack_vector: Local
+  factors: {elapsed_time: "<= 1 month", expertise: Expert, knowledge: Restricted, window: Moderate, equipment: Specialized}
+  r155: ["16.1", "25.2", "6.1", "6.2", "8.1"]
+  keywords: [charging, iso 15118, plc, charge port, wallbox, charging pile, ccs]
+
+debug_port:
+  label: Debug / JTAG port on ECU
+  attack_vector: Physical
+  factors: {elapsed_time: "<= 1 week", expertise: Expert, knowledge: Confidential, window: Difficult, equipment: Specialized}
+  r155: ["28.2", "19.1", "19.3", "32.1"]
+  keywords: [jtag, debug port, swd, uart, test pads]

@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Tests and retrieval evaluation
+    runs-on: ubuntu-latest
+    env:
+      TARA_EMBEDDINGS: "off"
+      TARA_LLM_PROVIDER: none
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements*.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run tests
+        run: python -m pytest -v
+
+      - name: Evaluate R155 retrieval (BM25)
+        run: python eval/retrieval_eval.py
+

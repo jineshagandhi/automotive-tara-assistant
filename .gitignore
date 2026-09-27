@@ -1,0 +1,19 @@
+# Local state: project database, vector index, downloaded embedding model
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

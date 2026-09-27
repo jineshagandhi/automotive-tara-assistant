@@ -1,0 +1,1072 @@
+{
+  "source": {
+    "title": "UN Regulation No 155 - Cybersecurity and cybersecurity management system",
+    "publication": "Official Journal of the European Union, L 82, 9.3.2021",
+    "celex": "42021X0387",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:42021X0387"
+  },
+  "categories": [
+    {
+      "id": "4.3.1",
+      "title": "Threats regarding back-end servers related to vehicles in the field"
+    },
+    {
+      "id": "4.3.2",
+      "title": "Threats to vehicles regarding their communication channels"
+    },
+    {
+      "id": "4.3.3",
+      "title": "Threats to vehicles regarding their update procedures"
+    },
+    {
+      "id": "4.3.4",
+      "title": "Threats to vehicles regarding unintended human actions facilitating a cyberattack"
+    },
+    {
+      "id": "4.3.5",
+      "title": "Threats to vehicles regarding their external connectivity and connections"
+    },
+    {
+      "id": "4.3.6",
+      "title": "Threats to vehicle data/code"
+    },
+    {
+      "id": "4.3.7",
+      "title": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened"
+    }
+  ],
+  "threats": [
+    {
+      "id": "1.1",
+      "high_level_id": "1",
+      "high_level": "Back-end servers used as a means to attack a vehicle or extract data",
+      "category_id": "4.3.1",
+      "category": "Threats regarding back-end servers related to vehicles in the field",
+      "text": "Abuse of privileges by staff (insider attack)",
+      "mitigations": [
+        "M1"
+      ]
+    },
+    {
+      "id": "1.2",
+      "high_level_id": "1",
+      "high_level": "Back-end servers used as a means to attack a vehicle or extract data",
+      "category_id": "4.3.1",
+      "category": "Threats regarding back-end servers related to vehicles in the field",
+      "text": "Unauthorized internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means)",
+      "mitigations": [
+        "M2"
+      ]
+    },
+    {
+      "id": "1.3",
+      "high_level_id": "1",
+      "high_level": "Back-end servers used as a means to attack a vehicle or extract data",
+      "category_id": "4.3.1",
+      "category": "Threats regarding back-end servers related to vehicles in the field",
+      "text": "Unauthorized physical access to the server (conducted by for example USB sticks or other media connecting to the server)",
+      "mitigations": [
+        "M8"
+      ]
+    },
+    {
+      "id": "2.1",
+      "high_level_id": "2",
+      "high_level": "Services from back-end server being disrupted, affecting the operation of a vehicle",
+      "category_id": "4.3.1",
+      "category": "Threats regarding back-end servers related to vehicles in the field",
+      "text": "Attack on back-end server stops it functioning, for example it prevents it from interacting with vehicles and providing services they rely on",
+      "mitigations": [
+        "M3"
+      ]
+    },
+    {
+      "id": "3.1",
+      "high_level_id": "3",
+      "high_level": "Vehicle related data held on back-end servers being lost or compromised ('data breach')",
+      "category_id": "4.3.1",
+      "category": "Threats regarding back-end servers related to vehicles in the field",
+      "text": "Abuse of privileges by staff (insider attack)",
+      "mitigations": [
+        "M1"
+      ]
+    },
+    {
+      "id": "3.2",
+      "high_level_id": "3",
+      "high_level": "Vehicle related data held on back-end servers being lost or compromised ('data breach')",
+      "category_id": "4.3.1",
+      "category": "Threats regarding back-end servers related to vehicles in the field",
+      "text": "Loss of information in the cloud. Sensitive data may be lost due to attacks or accidents when data is stored by third-party cloud service providers",
+      "mitigations": [
+        "M4"
+      ]
+    },
+    {
+      "id": "3.3",
+      "high_level_id": "3",
+      "high_level": "Vehicle related data held on back-end servers being lost or compromised ('data breach')",
+      "category_id": "4.3.1",
+      "category": "Threats regarding back-end servers related to vehicles in the field",
+      "text": "Unauthorized internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means)",
+      "mitigations": [
+        "M2"
+      ]
+    },
+    {
+      "id": "3.4",
+      "high_level_id": "3",
+      "high_level": "Vehicle related data held on back-end servers being lost or compromised ('data breach')",
+      "category_id": "4.3.1",
+      "category": "Threats regarding back-end servers related to vehicles in the field",
+      "text": "Unauthorized physical access to the server (conducted for example by USB sticks or other media connecting to the server)",
+      "mitigations": [
+        "M8"
+      ]
+    },
+    {
+      "id": "3.5",
+      "high_level_id": "3",
+      "high_level": "Vehicle related data held on back-end servers being lost or compromised ('data breach')",
+      "category_id": "4.3.1",
+      "category": "Threats regarding back-end servers related to vehicles in the field",
+      "text": "Information breach by unintended sharing of data (e.g. admin errors)",
+      "mitigations": [
+        "M5"
+      ]
+    },
+    {
+      "id": "4.1",
+      "high_level_id": "4",
+      "high_level": "Spoofing of messages or data received by the vehicle",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Spoofing of messages by impersonation (e.g. 802.11p V2X during platooning, GNSS messages, etc.)",
+      "mitigations": [
+        "M10"
+      ]
+    },
+    {
+      "id": "4.2",
+      "high_level_id": "4",
+      "high_level": "Spoofing of messages or data received by the vehicle",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Sybil attack (in order to spoof other vehicles as if there are many vehicles on the road)",
+      "mitigations": [
+        "M11"
+      ]
+    },
+    {
+      "id": "5.1",
+      "high_level_id": "5",
+      "high_level": "Communication channels used to conduct unauthorized manipulation, deletion or other amendments to vehicle held code/data",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Communications channels permit code injection, for example tampered software binary might be injected into the communication stream",
+      "mitigations": [
+        "M6",
+        "M10"
+      ]
+    },
+    {
+      "id": "5.2",
+      "high_level_id": "5",
+      "high_level": "Communication channels used to conduct unauthorized manipulation, deletion or other amendments to vehicle held code/data",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Communications channels permit manipulate of vehicle held data/code",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "5.3",
+      "high_level_id": "5",
+      "high_level": "Communication channels used to conduct unauthorized manipulation, deletion or other amendments to vehicle held code/data",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Communications channels permit overwrite of vehicle held data/code",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "5.4",
+      "high_level_id": "5",
+      "high_level": "Communication channels used to conduct unauthorized manipulation, deletion or other amendments to vehicle held code/data",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Communications channels permit erasure of vehicle held data/code",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "5.5",
+      "high_level_id": "5",
+      "high_level": "Communication channels used to conduct unauthorized manipulation, deletion or other amendments to vehicle held code/data",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Communications channels permit introduction of data/code to the vehicle (write data code)",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "6.1",
+      "high_level_id": "6",
+      "high_level": "Communication channels permit untrusted/unreliable messages to be accepted or are vulnerable to session hijacking/replay attacks",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Accepting information from an unreliable or untrusted source",
+      "mitigations": [
+        "M10"
+      ]
+    },
+    {
+      "id": "6.2",
+      "high_level_id": "6",
+      "high_level": "Communication channels permit untrusted/unreliable messages to be accepted or are vulnerable to session hijacking/replay attacks",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Man in the middle attack/ session hijacking",
+      "mitigations": [
+        "M10"
+      ]
+    },
+    {
+      "id": "6.3",
+      "high_level_id": "6",
+      "high_level": "Communication channels permit untrusted/unreliable messages to be accepted or are vulnerable to session hijacking/replay attacks",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Replay attack, for example an attack against a communication gateway allows the attacker to downgrade software of an ECU or firmware of the gateway",
+      "mitigations": [
+        "M10"
+      ]
+    },
+    {
+      "id": "7.1",
+      "high_level_id": "7",
+      "high_level": "Information can be readily disclosed. For example, through eavesdropping on communications or through allowing unauthorized access to sensitive files or folders",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Interception of information / interfering radiations / monitoring communications",
+      "mitigations": [
+        "M12"
+      ]
+    },
+    {
+      "id": "7.2",
+      "high_level_id": "7",
+      "high_level": "Information can be readily disclosed. For example, through eavesdropping on communications or through allowing unauthorized access to sensitive files or folders",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Gaining unauthorized access to files or data",
+      "mitigations": [
+        "M8"
+      ]
+    },
+    {
+      "id": "8.1",
+      "high_level_id": "8",
+      "high_level": "Denial of service attacks via communication channels to disrupt vehicle functions",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Sending a large number of garbage data to vehicle information system, so that it is unable to provide services in the normal manner",
+      "mitigations": [
+        "M13"
+      ]
+    },
+    {
+      "id": "8.2",
+      "high_level_id": "8",
+      "high_level": "Denial of service attacks via communication channels to disrupt vehicle functions",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Black hole attack, in order to disrupt communication between vehicles the attacker is able to block messages between the vehicles",
+      "mitigations": [
+        "M13"
+      ]
+    },
+    {
+      "id": "9.1",
+      "high_level_id": "9",
+      "high_level": "An unprivileged user is able to gain privileged access to vehicle systems",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "An unprivileged user is able to gain privileged access, for example root access",
+      "mitigations": [
+        "M9"
+      ]
+    },
+    {
+      "id": "10.1",
+      "high_level_id": "10",
+      "high_level": "Viruses embedded in communication media are able to infect vehicle systems",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Virus embedded in communication media infects vehicle systems",
+      "mitigations": [
+        "M14"
+      ]
+    },
+    {
+      "id": "11.1",
+      "high_level_id": "11",
+      "high_level": "Messages received by the vehicle (for example X2V or diagnostic messages), or transmitted within it, contain malicious content",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Malicious internal (e.g. CAN) messages",
+      "mitigations": [
+        "M15"
+      ]
+    },
+    {
+      "id": "11.2",
+      "high_level_id": "11",
+      "high_level": "Messages received by the vehicle (for example X2V or diagnostic messages), or transmitted within it, contain malicious content",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Malicious V2X messages, e.g. infrastructure to vehicle or vehicle-vehicle messages (e.g. CAM, DENM)",
+      "mitigations": [
+        "M10"
+      ]
+    },
+    {
+      "id": "11.3",
+      "high_level_id": "11",
+      "high_level": "Messages received by the vehicle (for example X2V or diagnostic messages), or transmitted within it, contain malicious content",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Malicious diagnostic messages",
+      "mitigations": [
+        "M10"
+      ]
+    },
+    {
+      "id": "11.4",
+      "high_level_id": "11",
+      "high_level": "Messages received by the vehicle (for example X2V or diagnostic messages), or transmitted within it, contain malicious content",
+      "category_id": "4.3.2",
+      "category": "Threats to vehicles regarding their communication channels",
+      "text": "Malicious proprietary messages (e.g. those normally sent from OEM or component/system/function supplier)",
+      "mitigations": [
+        "M10"
+      ]
+    },
+    {
+      "id": "12.1",
+      "high_level_id": "12",
+      "high_level": "Misuse or compromise of update procedures",
+      "category_id": "4.3.3",
+      "category": "Threats to vehicles regarding their update procedures",
+      "text": "Compromise of over the air software update procedures. This includes fabricating the system update program or firmware",
+      "mitigations": [
+        "M16"
+      ]
+    },
+    {
+      "id": "12.2",
+      "high_level_id": "12",
+      "high_level": "Misuse or compromise of update procedures",
+      "category_id": "4.3.3",
+      "category": "Threats to vehicles regarding their update procedures",
+      "text": "Compromise of local/physical software update procedures. This includes fabricating the system update program or firmware",
+      "mitigations": [
+        "M16"
+      ]
+    },
+    {
+      "id": "12.3",
+      "high_level_id": "12",
+      "high_level": "Misuse or compromise of update procedures",
+      "category_id": "4.3.3",
+      "category": "Threats to vehicles regarding their update procedures",
+      "text": "The software is manipulated before the update process (and is therefore corrupted), although the update process is intact",
+      "mitigations": [
+        "M16"
+      ]
+    },
+    {
+      "id": "12.4",
+      "high_level_id": "12",
+      "high_level": "Misuse or compromise of update procedures",
+      "category_id": "4.3.3",
+      "category": "Threats to vehicles regarding their update procedures",
+      "text": "Compromise of cryptographic keys of the software provider to allow invalid update",
+      "mitigations": [
+        "M11"
+      ]
+    },
+    {
+      "id": "13.1",
+      "high_level_id": "13",
+      "high_level": "It is possible to deny legitimate updates",
+      "category_id": "4.3.3",
+      "category": "Threats to vehicles regarding their update procedures",
+      "text": "Denial of Service attack against update server or network to prevent rollout of critical software updates and/or unlock of customer specific features",
+      "mitigations": [
+        "M3"
+      ]
+    },
+    {
+      "id": "15.1",
+      "high_level_id": "15",
+      "high_level": "Legitimate actors are able to take actions that would unwittingly facilitate a cyberattack",
+      "category_id": "4.3.4",
+      "category": "Threats to vehicles regarding unintended human actions facilitating a cyberattack",
+      "text": "Innocent victim (e.g. owner, operator or maintenance engineer) being tricked into taking an action to unintentionally load malware or enable an attack",
+      "mitigations": [
+        "M18"
+      ]
+    },
+    {
+      "id": "15.2",
+      "high_level_id": "15",
+      "high_level": "Legitimate actors are able to take actions that would unwittingly facilitate a cyberattack",
+      "category_id": "4.3.4",
+      "category": "Threats to vehicles regarding unintended human actions facilitating a cyberattack",
+      "text": "Defined security procedures are not followed",
+      "mitigations": [
+        "M19"
+      ]
+    },
+    {
+      "id": "16.1",
+      "high_level_id": "16",
+      "high_level": "Manipulation of the connectivity of vehicle functions enables a cyberattack, this can include telematics; systems that permit remote operations; and systems using short range wireless communications",
+      "category_id": "4.3.5",
+      "category": "Threats to vehicles regarding their external connectivity and connections",
+      "text": "Manipulation of functions designed to remotely operate systems, such as remote key, immobilizer, and charging pile",
+      "mitigations": [
+        "M20"
+      ]
+    },
+    {
+      "id": "16.2",
+      "high_level_id": "16",
+      "high_level": "Manipulation of the connectivity of vehicle functions enables a cyberattack, this can include telematics; systems that permit remote operations; and systems using short range wireless communications",
+      "category_id": "4.3.5",
+      "category": "Threats to vehicles regarding their external connectivity and connections",
+      "text": "Manipulation of vehicle telematics (e.g. manipulate temperature measurement of sensitive goods, remotely unlock cargo doors)",
+      "mitigations": [
+        "M20"
+      ]
+    },
+    {
+      "id": "16.3",
+      "high_level_id": "16",
+      "high_level": "Manipulation of the connectivity of vehicle functions enables a cyberattack, this can include telematics; systems that permit remote operations; and systems using short range wireless communications",
+      "category_id": "4.3.5",
+      "category": "Threats to vehicles regarding their external connectivity and connections",
+      "text": "Interference with short range wireless systems or sensors",
+      "mitigations": [
+        "M20"
+      ]
+    },
+    {
+      "id": "17.1",
+      "high_level_id": "17",
+      "high_level": "Hosted 3rd party software, e.g. entertainment applications, used as a means to attack vehicle systems",
+      "category_id": "4.3.5",
+      "category": "Threats to vehicles regarding their external connectivity and connections",
+      "text": "Corrupted applications, or those with poor software security, used as a method to attack vehicle systems",
+      "mitigations": [
+        "M21"
+      ]
+    },
+    {
+      "id": "18.1",
+      "high_level_id": "18",
+      "high_level": "Devices connected to external interfaces e.g. USB ports, OBD port, used as a means to attack vehicle systems",
+      "category_id": "4.3.5",
+      "category": "Threats to vehicles regarding their external connectivity and connections",
+      "text": "External interfaces such as USB or other ports used as a point of attack, for example through code injection",
+      "mitigations": [
+        "M22"
+      ]
+    },
+    {
+      "id": "18.2",
+      "high_level_id": "18",
+      "high_level": "Devices connected to external interfaces e.g. USB ports, OBD port, used as a means to attack vehicle systems",
+      "category_id": "4.3.5",
+      "category": "Threats to vehicles regarding their external connectivity and connections",
+      "text": "Media infected with a virus connected to a vehicle system",
+      "mitigations": [
+        "M22"
+      ]
+    },
+    {
+      "id": "18.3",
+      "high_level_id": "18",
+      "high_level": "Devices connected to external interfaces e.g. USB ports, OBD port, used as a means to attack vehicle systems",
+      "category_id": "4.3.5",
+      "category": "Threats to vehicles regarding their external connectivity and connections",
+      "text": "Diagnostic access (e.g. dongles in OBD port) used to facilitate an attack, e.g. manipulate vehicle parameters (directly or indirectly)",
+      "mitigations": [
+        "M22"
+      ]
+    },
+    {
+      "id": "19.1",
+      "high_level_id": "19",
+      "high_level": "Extraction of vehicle data/code",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Extraction of copyright or proprietary software from vehicle systems (product piracy)",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "19.2",
+      "high_level_id": "19",
+      "high_level": "Extraction of vehicle data/code",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Unauthorized access to the owner's privacy information such as personal identity, payment account information, address book information, location information, vehicle's electronic ID, etc.",
+      "mitigations": [
+        "M8"
+      ]
+    },
+    {
+      "id": "19.3",
+      "high_level_id": "19",
+      "high_level": "Extraction of vehicle data/code",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Extraction of cryptographic keys",
+      "mitigations": [
+        "M11"
+      ]
+    },
+    {
+      "id": "20.1",
+      "high_level_id": "20",
+      "high_level": "Manipulation of vehicle data/code",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Illegal/unauthorized changes to vehicle's electronic ID",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "20.2",
+      "high_level_id": "20",
+      "high_level": "Manipulation of vehicle data/code",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Identity fraud. For example, if a user wants to display another identity when communicating with toll systems, manufacturer backend",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "20.3",
+      "high_level_id": "20",
+      "high_level": "Manipulation of vehicle data/code",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Action to circumvent monitoring systems (e.g. hacking/ tampering/ blocking of messages such as ODR Tracker data, or number of runs)",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "20.4",
+      "high_level_id": "20",
+      "high_level": "Manipulation of vehicle data/code",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Data manipulation to falsify vehicle's driving data (e.g. mileage, driving speed, driving directions, etc.)",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "20.5",
+      "high_level_id": "20",
+      "high_level": "Manipulation of vehicle data/code",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Unauthorized changes to system diagnostic data",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "21.1",
+      "high_level_id": "21",
+      "high_level": "Erasure of data/code",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Unauthorized deletion/manipulation of system event logs",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "22.2",
+      "high_level_id": "22",
+      "high_level": "Introduction of malware",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Introduce malicious software or malicious software activity",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "23.1",
+      "high_level_id": "23",
+      "high_level": "Introduction of new software or overwrite existing software",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Fabrication of software of the vehicle control system or information system",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "24.1",
+      "high_level_id": "24",
+      "high_level": "Disruption of systems or operations",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Denial of service, for example this may be triggered on the internal network by flooding a CAN bus, or by provoking faults on an ECU via a high rate of messaging",
+      "mitigations": [
+        "M13"
+      ]
+    },
+    {
+      "id": "25.1",
+      "high_level_id": "25",
+      "high_level": "Manipulation of vehicle parameters",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Unauthorized access of falsify the configuration parameters of vehicle's key functions, such as brake data, airbag deployed threshold, etc.",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "25.2",
+      "high_level_id": "25",
+      "high_level": "Manipulation of vehicle parameters",
+      "category_id": "4.3.6",
+      "category": "Threats to vehicle data/code",
+      "text": "Unauthorized access of falsify the charging parameters, such as charging voltage, charging power, battery temperature, etc.",
+      "mitigations": [
+        "M7"
+      ]
+    },
+    {
+      "id": "26.1",
+      "high_level_id": "26",
+      "high_level": "Cryptographic technologies can be compromised or are insufficiently applied",
+      "category_id": "4.3.7",
+      "category": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened",
+      "text": "Combination of short encryption keys and long period of validity enables attacker to break encryption",
+      "mitigations": [
+        "M23"
+      ]
+    },
+    {
+      "id": "26.2",
+      "high_level_id": "26",
+      "high_level": "Cryptographic technologies can be compromised or are insufficiently applied",
+      "category_id": "4.3.7",
+      "category": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened",
+      "text": "Insufficient use of cryptographic algorithms to protect sensitive systems",
+      "mitigations": [
+        "M23"
+      ]
+    },
+    {
+      "id": "26.3",
+      "high_level_id": "26",
+      "high_level": "Cryptographic technologies can be compromised or are insufficiently applied",
+      "category_id": "4.3.7",
+      "category": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened",
+      "text": "Using already or soon to be deprecated cryptographic algorithms",
+      "mitigations": [
+        "M23"
+      ]
+    },
+    {
+      "id": "27.1",
+      "high_level_id": "27",
+      "high_level": "Parts or supplies could be compromised to permit vehicles to be attacked",
+      "category_id": "4.3.7",
+      "category": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened",
+      "text": "Hardware or software, engineered to enable an attack or fails to meet design criteria to stop an attack",
+      "mitigations": [
+        "M23"
+      ]
+    },
+    {
+      "id": "28.1",
+      "high_level_id": "28",
+      "high_level": "Software or hardware development permits vulnerabilities",
+      "category_id": "4.3.7",
+      "category": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened",
+      "text": "Software bugs. The presence of software bugs can be a basis for potential exploitable vulnerabilities. This is particularly true if software has not been tested to verify that known bad code/bugs is not present and reduce the risk of unknown bad code/bugs being present",
+      "mitigations": [
+        "M23"
+      ]
+    },
+    {
+      "id": "28.2",
+      "high_level_id": "28",
+      "high_level": "Software or hardware development permits vulnerabilities",
+      "category_id": "4.3.7",
+      "category": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened",
+      "text": "Using remainders from development (e.g. debug ports, JTAG ports, microprocessors, development certificates, developer passwords, …) can permit access to ECUs or permit attackers to gain higher privileges",
+      "mitigations": [
+        "M23"
+      ]
+    },
+    {
+      "id": "29.1",
+      "high_level_id": "29",
+      "high_level": "Network design introduces vulnerabilities",
+      "category_id": "4.3.7",
+      "category": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened",
+      "text": "Superfluous internet ports left open, providing access to network systems",
+      "mitigations": [
+        "M23"
+      ]
+    },
+    {
+      "id": "29.2",
+      "high_level_id": "29",
+      "high_level": "Network design introduces vulnerabilities",
+      "category_id": "4.3.7",
+      "category": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened",
+      "text": "Circumvent network separation to gain control. Specific example is the use of unprotected gateways, or access points (such as truck-trailer gateways), to circumvent protections and gain access to other network segments to perform malicious acts, such as sending arbitrary CAN bus messages",
+      "mitigations": [
+        "M23"
+      ]
+    },
+    {
+      "id": "30.1",
+      "high_level_id": "30",
+      "high_level": "Physical loss of data",
+      "category_id": null,
+      "category": "Listed in Table C3 only",
+      "text": "Damage caused by a third party. Sensitive data may be lost or compromised due to physical damages in cases of traffic accident or theft",
+      "mitigations": [
+        "M24"
+      ]
+    },
+    {
+      "id": "30.2",
+      "high_level_id": "30",
+      "high_level": "Physical loss of data",
+      "category_id": null,
+      "category": "Listed in Table C3 only",
+      "text": "Loss from DRM (digital right management) conflicts. User data may be deleted due to DRM issues",
+      "mitigations": [
+        "M24"
+      ]
+    },
+    {
+      "id": "30.3",
+      "high_level_id": "30",
+      "high_level": "Physical loss of data",
+      "category_id": null,
+      "category": "Listed in Table C3 only",
+      "text": "The (integrity of) sensitive data may be lost due to IT components wear and tear, causing potential cascading issues (in case of key alteration, for example)",
+      "mitigations": [
+        "M24"
+      ]
+    },
+    {
+      "id": "31.1",
+      "high_level_id": "31",
+      "high_level": "Unintended transfer of data can occur",
+      "category_id": "4.3.7",
+      "category": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened",
+      "text": "Information breach. Personal data may be leaked when the car changes user (e.g. is sold or is used as hire vehicle with new hirers)",
+      "mitigations": [
+        "M24"
+      ]
+    },
+    {
+      "id": "32.1",
+      "high_level_id": "32",
+      "high_level": "Physical manipulation of systems can enable an attack",
+      "category_id": "4.3.7",
+      "category": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened",
+      "text": "Manipulation of electronic hardware, e.g. unauthorized electronic hardware added to a vehicle to enable 'man-in-the-middle' attack Replacement of authorized electronic hardware (e.g., sensors) with unauthorized electronic hardware Manipulation of the information collected by a sensor (for example, using a magnet to tamper with the Hall effect sensor connected to the gearbox)",
+      "mitigations": [
+        "M9"
+      ]
+    }
+  ],
+  "mitigations": [
+    {
+      "id": "M1",
+      "text": "Security Controls are applied to back-end systems to minimise the risk of insider attack",
+      "tables": [
+        "C1"
+      ],
+      "parts": [
+        "C"
+      ]
+    },
+    {
+      "id": "M2",
+      "text": "Security Controls are applied to back-end systems to minimise unauthorised access. Example Security Controls can be found in OWASP",
+      "tables": [
+        "C1"
+      ],
+      "parts": [
+        "C"
+      ]
+    },
+    {
+      "id": "M3",
+      "text": "Security Controls shall be applied to back-end systems. Where back-end servers are critical to the provision of services there are recovery measures in case of system outage. Example Security Controls can be found in OWASP",
+      "tables": [
+        "B2",
+        "C1"
+      ],
+      "parts": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "M4",
+      "text": "Security Controls are applied to minimise risks associated with cloud computing. Example Security Controls can be found in OWASP and NCSC cloud computing guidance",
+      "tables": [
+        "C1"
+      ],
+      "parts": [
+        "C"
+      ]
+    },
+    {
+      "id": "M5",
+      "text": "Security Controls are applied to back-end systems to prevent data breaches. Example Security Controls can be found in OWASP",
+      "tables": [
+        "C1"
+      ],
+      "parts": [
+        "C"
+      ]
+    },
+    {
+      "id": "M6",
+      "text": "Systems shall implement security by design to minimize risks",
+      "tables": [
+        "B1"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M7",
+      "text": "Access control techniques and designs shall be applied to protect system data/code",
+      "tables": [
+        "B1",
+        "B5"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M8",
+      "text": "Through system design and access control it should not be possible for unauthorized personnel to access personal or system critical data. Example of Security Controls can be found in OWASP",
+      "tables": [
+        "B1",
+        "B5",
+        "C1"
+      ],
+      "parts": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "M9",
+      "text": "Measures to prevent and detect unauthorized access shall be employed",
+      "tables": [
+        "B1",
+        "B8"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M10",
+      "text": "The vehicle shall verify the authenticity and integrity of messages it receives",
+      "tables": [
+        "B1"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M11",
+      "text": "Security controls shall be implemented for storing cryptographic keys (e.g., use of Hardware Security Modules)",
+      "tables": [
+        "B1",
+        "B2",
+        "B5"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M12",
+      "text": "Confidential data transmitted to or from the vehicle shall be protected",
+      "tables": [
+        "B1"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M13",
+      "text": "Measures to detect and recover from a denial of service attack shall be employed",
+      "tables": [
+        "B1",
+        "B5"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M14",
+      "text": "Measures to protect systems against embedded viruses/malware should be considered",
+      "tables": [
+        "B1"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M15",
+      "text": "Measures to detect malicious internal messages or activity should be considered",
+      "tables": [
+        "B1"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M16",
+      "text": "Secure software update procedures shall be employed",
+      "tables": [
+        "B2"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M18",
+      "text": "Measures shall be implemented for defining and controlling user roles and access privileges, based on the principle of least access privilege",
+      "tables": [
+        "B3",
+        "C2"
+      ],
+      "parts": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "M19",
+      "text": "Organizations shall ensure security procedures are defined and followed including logging of actions and access related to the management of the security functions",
+      "tables": [
+        "B3",
+        "C2"
+      ],
+      "parts": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "M20",
+      "text": "Security controls shall be applied to systems that have remote access",
+      "tables": [
+        "B4"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M21",
+      "text": "Software shall be security assessed, authenticated and integrity protected.",
+      "tables": [
+        "B4"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M22",
+      "text": "Security controls shall be applied to external interfaces",
+      "tables": [
+        "B4"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M23",
+      "text": "Cybersecurity best practices for software and hardware development shall be followed",
+      "tables": [
+        "B6"
+      ],
+      "parts": [
+        "B"
+      ]
+    },
+    {
+      "id": "M24",
+      "text": "Best practices for the protection of data integrity and confidentiality shall be followed for storing personal data.",
+      "tables": [
+        "B7",
+        "C3"
+      ],
+      "parts": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "mitigation_tables": {
+    "B1": "Mitigation to the threats which are related to 'Vehicle communication channels'",
+    "B2": "Mitigations to the threats which are related to 'Update process'",
+    "B3": "Mitigations to the threats which are related to 'Unintended human actions facilitating a cyberattack'",
+    "B4": "Mitigation to the threats which are related to 'external connectivity and connections'",
+    "B5": "Mitigations to the threats which are related to 'Potential targets of, or motivations for, an attack'",
+    "B6": "Mitigations to the threats which are related to 'Potential vulnerabilities that could be exploited if not sufficiently protected or hardened'",
+    "B7": "Mitigations to the threats which are related to 'Data loss / data breach from vehicle'",
+    "B8": "Mitigations to the threats which are related to 'Physical manipulation of systems to enable an attack'",
+    "C1": "Mitigations to the threats which are related to 'Back-end servers'",
+    "C2": "Mitigations to the threats which are related to 'Unintended human actions'",
+    "C3": "Mitigations to the threats which are related to 'Physical loss of data'"
+  }
+}
